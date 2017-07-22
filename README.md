@@ -1,1 +1,2 @@
-Repositório destinado ao estudo de pug
+# estudo-pug
+Estudo sobre pug.js
