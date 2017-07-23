@@ -6,17 +6,20 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require( 'browser-sync' ).create();
 
 gulp.task( 'taskPug', function buildHtml(){
-    return gulp.src('src/*.pug')
+    return gulp.src([
+					'src/*.pug',
+					'src/includes/*.pug'
+					])
                .pipe( pug({
                    pretty: true
                }) )
                .pipe( gulp.dest('dist/') )
-               .on( 'error', gulpUtil.log )
+            //    .on( 'error', gulpUtil.log )
                .pipe( browserSync.stream() )
 });
 
 gulp.task( 'taskSass', function buildSass(){
-    return gulp.src('sass/**/*.scss')
+    return gulp.src('src/sass/**/*.scss')
                .pipe(sass({
                             style: 'expanded',
                             sourceComments: 'map',
@@ -26,13 +29,13 @@ gulp.task( 'taskSass', function buildSass(){
                .pipe( gulp.dest( 'dist/css' ))
                .on('error', gulpUtil.log)
                .pipe( browserSync.stream() );
-               
+
 });
 
 gulp.task( 'initServer', ['taskPug'], function startServe(){
-    
+
     browserSync.init({
-       server: './dist' 
+       server: './dist'
     });
 
     gulp.watch( 'src/*.pug', ['taskPug']);
