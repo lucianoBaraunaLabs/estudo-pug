@@ -1,34 +1,43 @@
 const gulp = require( 'gulp' );
-const gulpUtil = require( 'gulp-util' );
+const sourcemaps = require( 'gulp-sourcemaps' ); 
+const notify = require( 'gulp-notify' ); 
 const pug = require( 'gulp-pug' );
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require( 'browser-sync' ).create();
 
+const paths = {
+  "pathPug": 'src/*.pug',
+  "pathSass": 'src/sass/*.scss',
+  "dist": 'dist/',
+  'distCss': 'dist/css',
+  'distWatchHtml': 'dist/*.html'
+}
+
 gulp.task( 'taskPug', function buildHtml(){
-    return gulp.src([
-					'src/*.pug',
-					'src/includes/*.pug'
-					])
-               .pipe( pug({
-                   pretty: true
-               }) )
-               .pipe( gulp.dest('dist/') )
-            //    .on( 'error', gulpUtil.log )
+    return gulp.src(paths.pathPug)
+               .pipe(pug({
+                            pretty: '\t',
+                            compileDebug: false
+                        }))
+               .on('error', notify.onError(function notifyErroPug (error){
+                  return 'Erro na compilação do pug: \n' + error;
+               }))
+               .pipe( gulp.dest(paths.dist) )
                .pipe( browserSync.stream() )
 });
 
 gulp.task( 'taskSass', function buildSass(){
-    return gulp.src('src/sass/**/*.scss')
+    return gulp.src(paths.pathSass)
+               .pipe(sourcemaps.init())
                .pipe(sass({
-                            style: 'expanded',
-                            sourceComments: 'map',
-                            errLogToConsole: true
-                         }))
+                            outputStyle: 'compressed',
+                            sourceComments: 'map'
+                         }).on('error', sass.logError))
                .pipe(autoprefixer( 'last 2 version', '> 1%', 'ie 10' ))
-               .pipe( gulp.dest( 'dist/css' ))
-               .on('error', gulpUtil.log)
-               .pipe( browserSync.stream() );
+               .pipe(sourcemaps.write('./'))
+               .pipe( gulp.dest( paths.distCss))
+               .pipe( browserSync.stream({stream:true}) );
 
 });
 
@@ -38,9 +47,9 @@ gulp.task( 'initServer', ['taskPug'], function startServe(){
        server: './dist'
     });
 
-    gulp.watch( 'src/*.pug', ['taskPug']);
-    gulp.watch( 'src/**/*.scss', ['taskSass']);
-    gulp.watch( 'dist/*.html' )
+    gulp.watch( paths.pathPug, ['taskPug']);
+    gulp.watch( paths.pathSass, ['taskSass']);
+    gulp.watch( paths.distWatchHtml )
         .on( 'change', browserSync.reload );
 
 });

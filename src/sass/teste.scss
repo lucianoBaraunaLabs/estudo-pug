@@ -1,5 +1,12 @@
+
+@import "teste/casa.scss";
+
 body {
 	background-color: black;
-	color: black;
+  color: white;
+  &:hover {
+    color: green;
+    background-color: yellow;
+  }
 
 }
