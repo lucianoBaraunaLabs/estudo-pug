@@ -1,6 +1,6 @@
 const gulp = require( 'gulp' );
-const sourcemaps = require( 'gulp-sourcemaps' ); 
-const notify = require( 'gulp-notify' ); 
+const sourcemaps = require( 'gulp-sourcemaps' );
+const notify = require( 'gulp-notify' );
 const pug = require( 'gulp-pug' );
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
