@@ -7,7 +7,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require( 'browser-sync' ).create();
 
 const paths = {
-  "pathPug": 'src/*.pug',
+  "pathPug": 'src/**/*.pug',
   "pathSass": 'src/sass/*.scss',
   "dist": 'dist/',
   'distCss': 'dist/css',
