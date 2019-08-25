@@ -1,0 +1,28 @@
+doctype html
+html(lang="pt-br")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Atributos
+  body
+    //- Podemos trabalhar utilizar os operados JS apartir do template literals do JS
+    input(type="text" name="nome" data-js=`${5 > 2 ? "OK" : "NOT OK"}`)
+
+    //- Podemos passar um array para um atributo class e assim ele renderiza
+    //- multíplas classes
+    - const myClasses = ['class1', 'class2', 'class3'];
+    div.box(class=myClasses)
+
+    //- Passando estilos para os elementos
+    - const myStyles = {"color": "red", "background-color": "blue"};
+    div(style=myStyles)
+
+    //- Passando atributos por objeto
+    - const myAtributes = {"src": "teste.png", "alt": "Isso é uma foto de teste"};
+    img&attributes(myAtributes)
+
+    //- Passando valores false para atributos que não preciso de valores
+    //- disabled=true é igual a disabled
+    input(type="text" disabled=false)
+    input(type="text" disabled=true)
