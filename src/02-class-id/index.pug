@@ -1,0 +1,18 @@
+doctype html
+html(lang="pt-br")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Classes e ids
+  body
+    h1#title Aqui tem um id #title
+    .box aqui é somente uma div com a class .box
+
+
+    p.texto
+      | aqui tem uma class .texto  e estamos utilizando
+      | a interpolação de tags para usar o br #[br] #[br] Lorem ipsum dolor sit amet consectetur
+    p.texto.grande.
+      aqui tem uma class .texto.grande
+      Lorem ipsum dolor sit amet consectetur
