@@ -1,0 +1,19 @@
+doctype html
+html(lang="pt-br")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Case
+  body
+    - const orderStats = 'random'
+
+    case orderStats
+      when 'Pending'
+        p Your order has been placed and will be sent shortly
+      when 'In_Transit'
+        p Your order is on the move - you should receive is sonn!
+      when 'Completed'
+        p Your order has been completed
+      default
+        p Sorry! We aren't sure what happened with your order...
