@@ -1,0 +1,11 @@
+mixin navLink(link, name)
+  li
+    a(
+      href=link
+      class={active: name === currentPage}
+    ) #{name}
+
+ul
+  +navLink('./index.html', 'Index')
+  +navLink('./about.html', 'About')
+  +navLink('./contact.html', 'Contact')

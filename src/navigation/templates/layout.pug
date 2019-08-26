@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title #{pageTitle}
+    style.
+      :root {
+        --colorLink: #4A6D72;
+        --colorActive: #00BCD4;
+      }
+      ul {
+        display: flex;
+        justify-content: flex-end;
+        list-style: none;
+      }
+      li {
+        padding: 1rem 1.5rem;
+      }
+      a {
+        text-decoration: none;
+        font-size: 1.4rem;
+        font-weight: 900;
+        font-family: 'Arial', sans-serif;
+        color: var(--colorLink);
+        border-bottom: solid 3px transparent;
+      }
+      a.active {
+        color: var(--colorActive);
+        border-color: var(--colorActive);
+      }
+  body
+    block main
+      h1 Hello world
