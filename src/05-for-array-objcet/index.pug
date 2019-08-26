@@ -1,0 +1,29 @@
+doctype html
+html(lang="pt-br")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title For, Array, Obj e etc..
+  body
+    //- Para conseguirmos utilizar o valor do loop precisamos coloca rum sinal
+    //- de igual ao lado da tag para receber o valor.
+    h1 For/Each loop
+    each n,i in [50, 2, 3, 104, 5]
+      p= 'Índice ' + i + ' / ' + 'valor: ' + n
+
+    - const nomes = ['goku', 'xuxa', 'epaminondas']
+    each n,i in nomes
+      p= 'Índice ' + i + ' / ' + 'valor: ' + n
+    else
+      strong Não te nada
+
+    br
+    br
+
+    h1 For/Each em objetos
+    - const grades = { "web dev": 100, "design": 70}
+    for prop, value in {}
+      p= 'Propriedade: ' + prop  + ' / Valor ' + value
+    else
+      strong não tem nada
