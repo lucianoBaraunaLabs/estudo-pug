@@ -1,0 +1,11 @@
+extends includes/layout
+
+block append config
+  - var pageTitle = 'Página inicial'
+  - var name = 'Goku'
+  - var age =  50
+
+block prepend main
+  h2 Olá você está na página inicial #{name} e você tem #{age} de idade.
+  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio atque nulla explicabo minus doloremque, corrupti vero! Corrupti commodi tempora blanditiis at quaerat pariatur illum ex neque, animi ipsa odio provident!
+
